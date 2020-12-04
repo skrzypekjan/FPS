@@ -5,15 +5,29 @@ using UnityEngine.UI;
 
 public class Pistol : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Variables
+
+
+
+    #endregion
+
+
+    #region MonoBehaviour Callbacks
+
+    private void Start()
     {
-        
+
+    }
+    private void Update()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
+
+
+    #region Private Methods
+
+
+    #endregion
 }
