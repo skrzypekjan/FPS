@@ -25,6 +25,9 @@ public class BulletSpawner : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             SpawnBullet();
+            System.Timers.Timer aTimer = new System.Timers.Timer();
+            aTimer.Interval = 1000;
+            aTimer.Enabled = true;
         }
     }
 
@@ -37,7 +40,7 @@ public class BulletSpawner : MonoBehaviour
     {
         Rigidbody _bullet = (Rigidbody) Instantiate(bullet.GetComponent<Rigidbody>(), new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         _bullet.velocity = _bullet.transform.forward * 25.5f;
-
+        
     }
 
 
