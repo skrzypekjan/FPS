@@ -6,10 +6,11 @@ public class Bullet : MonoBehaviour
 {
     #region Variables
 
-    public float speed = 1f;
     public float lifeDuration = 2f;
 
     private float lifeTimer;
+
+    private Collider colision;
 
     #endregion
 
@@ -19,25 +20,34 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         lifeTimer = lifeDuration;
+        colision = this.GetComponent<Collider>();
     }
     private void Update()
     {
-        //Bullet move
-        transform.position = transform.forward * speed * Time.deltaTime;
-
-        //Bullet lfetime
         lifeTimer -= Time.deltaTime;
         if(lifeTimer <= 0f)
         {
             Destroy(gameObject);
         }
+       
     }
 
     #endregion
 
-
     #region Private Methods
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+        
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Debug.Log(contact.point);
+        }
+    }
 
     #endregion
 }
